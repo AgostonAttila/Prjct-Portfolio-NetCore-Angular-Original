@@ -1,0 +1,35 @@
+
+
+<ul class="dropdown-menu" role="menu" aria-labelledby="menu1"  *ngIf="managements">
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">All</a></li>
+  <li role="presentation" class="divider"></li>
+  <li *ngFor="let management of managements" role="presentation"><a role="menuitem" tabindex="-1" href="#">>{{ management.name }}</a></li>
+</ul>
+
+<table class='table' *ngIf="fundDetails">
+  <thead>
+    <tr>
+      <th>ISIN</th>
+      <th>Name</th>
+      <th>Currency</th>
+      <th>Management</th>
+      <th>Focus</th>
+      <th>Type</th>
+      <th>Url</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fundDetail of fundDetails">
+      <td>{{ fundDetail.isinNumber }}</td>
+      <td>{{ fundDetail.name }}</td>
+      <td>{{ fundDetail.currency }}</td>
+      <td>{{ fundDetail.management }}</td>
+      <td>{{ fundDetail.focus }}</td>
+      <td>{{ fundDetail.type }}</td>
+      <td>{{ fundDetail.url }}</td>
+      <td><span class="glyphicon glyphicon-remove" (click)="deleteFundDetail(fundDetail.isinNumber)"></span></td>
+    </tr>
+  </tbody>
+</table>
+

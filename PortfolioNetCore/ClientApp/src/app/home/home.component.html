@@ -1,0 +1,84 @@
+<p *ngIf="!funds"><em>Loading...</em></p>
+
+<button type="button" class="btn btn-primary" (click)="reFreshFundList()">Refresh funds</button>
+
+<!--<table class='table' *ngIf="funds">-->
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th>ISIN</th>
+      <th>Name</th>
+      <th>Currency</th>
+      <th>Management</th>
+      <th>Focus</th>
+      <th>Type</th>
+      <th>YTD</th>
+      <th>1 year</th>
+      <th>3 year</th>
+      <th>5 year</th>
+      <th>from Beg.</th>
+      <th>{{today | date: 'yyyy'}}</th>
+      <th>{{today | date: 'yyyy'}}</th>
+      <th>{{today | date: 'yyyy'}}</th>
+      <th>{{today | date: 'yyyy'}}</th>
+      <th>{{today | date: 'yyyy'}}</th>
+      <th>{{today | date: 'yyyy'}}</th>
+      <th>{{today | date: 'yyyy'}}</th>
+      <th>{{today | date: 'yyyy'}}</th>
+      <th>{{today | date: 'yyyy'}}</th>
+      <th>Average</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fund of funds">
+      <td>{{ fund.iSINNumber }}</td>
+      <td>{{ fund.name }}</td>
+      <td>{{ fund.currency }}</td>
+      <td>{{ fund.management }}</td>
+      <td>{{ fund.focus }}</td>
+      <td>{{ fund.type }}</td>
+      <!--<td [ngClass]="[type === 'mybutton' ? namespace + '-mybutton' : '']">{{ fund.performanceYTD }} </td>-->
+      <!--str1.startsWith('Sat', 3)-->
+      <!--fund.performanceYTD[0] === '-'-->
+      <td [ngClass]="{'red': fund.performanceYTD[0] === '-',  'green': fund.performanceYTD[0] === '+'}">{{ fund.performanceYTD
+        }}</td>
+      <td [ngClass]="{'red': fund.performance1Year[0] === '-',  'green': fund.performance1Year[0] === '+'}">{{ fund.performance1Year
+        }}</td>
+      <td [ngClass]="{'red': fund.performance3Year[0] === '-',  'green': fund.performance3Year[0] === '+'}">{{ fund.performance3Year
+        }}</td>
+      <td [ngClass]="{'red': fund.performance5Year[0] === '-',  'green': fund.performance5Year[0] === '+'}">{{ fund.performance5Year
+        }}</td>
+      <td [ngClass]="{'red': fund.performanceFromBeggining[0] === '-',  'green': fund.performanceFromBeggining[0] === '+'}">{{
+        fund.performanceFromBeggining }}</td>
+      <td [ngClass]="{'red': fund.performanceActualMinus9[0] === '-',  'green': fund.performanceActualMinus9[0] === '+'}">{{
+        fund.performanceActualMinus9 }}</td>
+      <td [ngClass]="{'red': fund.performanceActualMinus8[0] === '-',  'green': fund.performanceActualMinus8[0] === '+'}">{{
+        fund.performanceActualMinus8 }}</td>
+      <td [ngClass]="{'red': fund.performanceActualMinus7[0] === '-',  'green': fund.performanceActualMinus7[0] === '+'}">{{
+        fund.performanceActualMinus7 }}</td>
+      <td [ngClass]="{'red': fund.performanceActualMinus6[0] === '-',  'green': fund.performanceActualMinus6[0] === '+'}">{{
+        fund.performanceActualMinus6 }}</td>
+      <td [ngClass]="{'red': fund.performanceActualMinus5[0] === '-',  'green': fund.performanceActualMinus5[0] === '+'}">{{
+        fund.performanceActualMinus5 }}</td>
+      <td [ngClass]="{'red': fund.performanceActualMinus4[0] === '-',  'green': fund.performanceActualMinus4[0] === '+'}">{{
+        fund.performanceActualMinus4 }}</td>
+      <td [ngClass]="{'red': fund.performanceActualMinus3[0] === '-',  'green': fund.performanceActualMinus3[0] === '+'}">{{
+        fund.performanceActualMinus3 }}</td>
+      <td [ngClass]="{'red': fund.performanceActualMinus2[0] === '-',  'green': fund.performanceActualMinus2[0] === '+'}">{{
+        fund.performanceActualMinus2 }}</td>
+      <td [ngClass]="{'red': fund.performanceActualMinus1[0] === '-',  'green': fund.performanceActualMinus1[0] === '+'}">{{
+        fund.performanceActualMinus1 }}</td>
+      <td [ngClass]="{'red': fund.performanceAverage[0] === '-',  'green': fund.performanceAverage[0] === '+'}">{{ fund.performanceAverage
+        }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<!--public string VolatilityArrayString { get; set; }
+public string SharpRateArrayString { get; set; }
+public string BestMonthArrayString { get; set; }
+public string WorstMonthArrayString { get; set; }
+public string MaxLossArrayString { get; set; }
+public string OverFulFilmentArrayString { get; set; }-->
